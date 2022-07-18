@@ -1,0 +1,13 @@
+name: Build and Push version tagged Docker for each tag
+on: push
+  tags:
+    - 'v[0-9]+.[0-9]+.[0-9]+'
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: olegtarasov/get-tag@v2.1
+        id: tagName
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🎉 Tag is ${{ steps.tagName.outputs.tag }}."
+      - run: echo "🍏 This job's status is ${{ job.status }}."
